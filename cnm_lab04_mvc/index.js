@@ -51,17 +51,27 @@ app.post('/save', upload.single('fileimage'), (req, res) => {
   }
 
   data1.push(params) // thêm params vào data1
+  console.log('Thêm thành công')
   console.log(data1)
   return res.redirect('/') // gọi lại trang index để hiển thị lại data1
 })
 
 // bắt sự kiện xóa
 app.post('/delete', upload.fields([]), (req, res) => {
-  const idcheck = req.body.idcheck
+  let idcheck = req.body.idcheck
   console.log(idcheck)
+  // Kiểm tra xem idcheck có phải là mảng không
+  if (!Array.isArray(idcheck)) {
+    // Nếu không phải mảng, chuyển nó thành mảng để xử lý tiếp theo
+    idcheck = [idcheck]
+  }
+  console.log(idcheck)
+  console.log('Trước khi xoá : ', data1)
+
   // check idcheck ở trong data1
   idcheck.forEach((id) => {
-    const index = data1.findIndex((item) => item.id === Number(id))
+    // reload lại data1 sau khi thêm ở save
+    const index = data1.findIndex((item) => Number(item.id) === Number(id))
     if (index !== -1) {
       data1.splice(index, 1) // xóa 1 phần tử tại vị trí index
       console.log('Xoá thành công')
@@ -69,6 +79,7 @@ app.post('/delete', upload.fields([]), (req, res) => {
       console.log('Không tìm thấy id')
     }
   })
+  console.log('Sau khi xoá : ', data1)
   return res.redirect('/') // gọi lại trang index để hiển thị lại data1
 })
 
