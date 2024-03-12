@@ -47,7 +47,7 @@
             name="name"
             id="name"
             placeholder="Nhập name "
-          
+
           />
         </div>
         <div class="form-group">
@@ -71,19 +71,18 @@
           />
         </div>
         <div class="form-group">
-          <label for="formGroupExampleInput2">department </label>
-          <input
-            type="text"
-            class="form-control"
-            id="department"
-            name="department"
-            placeholder="Nhập department"
-          />
+          <label for="formGroupExampleInput2">department </label> <br>
+          <select class="form-control" id="department" name="department">
+            <option value="Khoa CNTT">Khoa CNTT</option>
+            <option value="Khoa Kinh Tế">Khoa Kinh Tế</option>
+            <option value="Khoa Ngoại Ngữ">Khoa Ngoại Ngữ</option>
+            <option value="Khoa Luật">Khoa Luật</option>
+          </select>
         </div>
 
         <div class="form-group">
-          <label for="exampleFormControlFile1">choose a file</label>
-          <input type="file" name="fileimage" accept="image/*" class="form-control-file" id="exampleFormControlFile1" required>
+          <label for="exampleFormControlFile1">choose a file</label> <br>
+          <input type="file" name="fileimage" accept="image/*"  id="exampleFormControlFile1" required>
         </div>
 
         <div class="text-center">
@@ -118,10 +117,9 @@
               <th class="th_item"><%=item.semester %> </th>
               <th class="th_item"><%=item.department %> </th>
               <th class="th_item"> <img src="<%= item.image %>" alt="image" style="width:150px; height:150px " /> </th>
-              <!-- <th class="th_item"><input type="checkbox" id="idcheck" name="idcheck" value="<%= item.id%>" > </th> -->
               <th class="th_item">
-                <input type="checkbox" id="<%= item.id %>" name="<%= item.id %>" value="<%= item.id%>" > 
-               </th>
+                <input type="checkbox" id="<%= item.id %>" name="<%= item.id %>" value="<%= item.id%>" >
+              </th>
 
             </tr>
 
